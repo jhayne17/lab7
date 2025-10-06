@@ -288,7 +288,33 @@ from unittest import mock
 @mock.patch.object(RecognizerResult, "logger")
 def test_logger(mock_logger):
     # replace the following line of `pass` with your test implementation
-    pass
+    from unittest import mock
+
+@mock.patch.object(RecognizerResult, "logger")
+def test_logger(mock_logger):
+    # Create a recognizer result using the helper
+    entity_type = "PERSON"
+    score = 0.8
+    start = 11
+    end = 15
+    _ = create_recognizer_result(entity_type, score, start, end)
+
+    # Assert that logger.info was called
+    assert mock_logger.info.called, "Expected logger.info to be called"
+
+    # Assert the log message contains entity_type, start, end, and score
+    logged = []
+    for args, kwargs in mock_logger.info.call_args_list:
+        parts = [str(a) for a in args]
+        parts += [f"{k}={v}" for k, v in kwargs.items()]
+        logged.append(" ".join(parts))
+    combined = "\n".join(logged)
+
+    assert entity_type in combined
+    assert str(start) in combined
+    assert str(end) in combined
+    assert str(score) in combined
+
 
 def create_recognizer_result(entity_type: str, score: float, start: int, end: int):
     data = {"entity_type": entity_type, "score": score, "start": start, "end": end}
