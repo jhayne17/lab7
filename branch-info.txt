@@ -1,18 +1,11 @@
 Branches in this repo (with details):
 
-- dependabot/github_actions/actions/checkout-5
-  SHA: 6a87aeb092588e3b1f3ef7dcf0776dc6afaa2158
-  Commits: 3
-  Recent commits:
-    6a87aeb | Author: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com> | Committer: GitHub <noreply@github.com> | Date: 2025-10-06T16:01:27Z | Bump actions/checkout from 3 to 5
-    530bc00 | Author: GitHub Actions <actions@github.com> | Committer: GitHub Actions <actions@github.com> | Date: 2025-10-06T15:21:27Z | Auto-update branch-info.txt
-    8ab783f | Author: Justin Haynes <232441884+jhayne17@users.noreply.github.com> | Committer: GitHub <noreply@github.com> | Date: 2025-10-06T11:21:16-04:00 | Initial commit
 - main
-  SHA: 4e1a0e512d219f4e32d406b0b08fb75f50a8babd
-  Commits: 5
+  SHA: 2ff47fcb693f338daa49ad1383bf840ebbeffba4
+  Commits: 8
   Recent commits:
+    2ff47fc | Author: Justin Haynes <232441884+jhayne17@users.noreply.github.com> | Committer: GitHub <noreply@github.com> | Date: 2025-10-06T12:24:02-04:00 | Merge pull request #1 from jhayne17/dependabot/github_actions/actions/checkout-5
+    4d4f462 | Author: GitHub Actions <actions@github.com> | Committer: GitHub Actions <actions@github.com> | Date: 2025-10-06T16:20:31Z | Auto-update branch-info.txt
     4e1a0e5 | Author: Justin Haynes <232441884+jhayne17@users.noreply.github.com> | Committer: Justin Haynes <232441884+jhayne17@users.noreply.github.com> | Date: 2025-10-06T16:20:00Z | Merge branch 'lab7'
     6fd1f33 | Author: Justin Haynes <232441884+jhayne17@users.noreply.github.com> | Committer: Justin Haynes <232441884+jhayne17@users.noreply.github.com> | Date: 2025-10-06T16:19:59Z | Lab7: tests & coverage updates
     6ae701a | Author: GitHub Actions <actions@github.com> | Committer: GitHub Actions <actions@github.com> | Date: 2025-10-06T16:01:39Z | Auto-update branch-info.txt
-    530bc00 | Author: GitHub Actions <actions@github.com> | Committer: GitHub Actions <actions@github.com> | Date: 2025-10-06T15:21:27Z | Auto-update branch-info.txt
-    8ab783f | Author: Justin Haynes <232441884+jhayne17@users.noreply.github.com> | Committer: GitHub <noreply@github.com> | Date: 2025-10-06T11:21:16-04:00 | Initial commit
