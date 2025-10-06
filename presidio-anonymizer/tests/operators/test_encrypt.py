@@ -26,10 +26,12 @@ def test_given_anonymize_with_bytes_key_then_aes_encrypt_result_is_returned(mock
 
 
 def test_given_verifying_an_valid_length_key_no_exceptions_raised():
+    # 16-char string -> 128-bit key
     Encrypt().validate(params={"key": "128bitslengthkey"})
 
 
 def test_given_verifying_an_valid_length_bytes_key_no_exceptions_raised():
+    # 16-byte key -> 128-bit key
     Encrypt().validate(params={"key": b"1111111111111111"})
 
 
@@ -38,55 +40,26 @@ def test_given_verifying_an_invalid_length_key_then_ipe_raised():
         InvalidParamError,
         match="Invalid input, key must be of length 128, 192 or 256 bits",
     ):
+        # Too short string -> invalid length
         Encrypt().validate(params={"key": "key"})
 
 
-def test_given_verifying_an_invalid_length_bytes_key_then_ipe_raised():
+# ---- REQUIRED FIXED TEST (correct patch target, renamed mock var, return_value set) ----
+@mock.patch.object(AESCipher, "get_key_bytes")
+def test_given_verifying_an_invalid_length_bytes_key_then_ipe_raised(mock_get_key_bytes):
     """
-    Force Encrypt.validate() down the invalid-length branch for a BYTES key.
-    Patch whichever helper actually exists so the key appears invalid.
+    Ensure that when a bytes key ultimately resolves to an invalid length (not 16/24/32),
+    validate() raises InvalidParamError. We force this by making get_key_bytes return 1 byte.
     """
-    if hasattr(AESCipher, "_get_key_bytes"):
-        with mock.patch.object(AESCipher, "_get_key_bytes", return_value=b"x"):
-            with pytest.raises(
-                InvalidParamError,
-                match="Invalid input, key must be of length 128, 192 or 256 bits",
-            ):
-                Encrypt().validate(params={"key": b"1111111111111111"})
-        return
+    # Make validate() see an invalid-length key (1 byte instead of 16/24/32)
+    mock_get_key_bytes.return_value = b"x"
 
-    if hasattr(AESCipher, "get_key_bytes"):
-        with mock.patch.object(AESCipher, "get_key_bytes", return_value=b"x"):
-            with pytest.raises(
-                InvalidParamError,
-                match="Invalid input, key must be of length 128, 192 or 256 bits",
-            ):
-                Encrypt().validate(params={"key": b"1111111111111111"})
-        return
-
-    if hasattr(AESCipher, "is_valid_key_length"):
-        with mock.patch.object(AESCipher, "is_valid_key_length", return_value=False):
-            with pytest.raises(
-                InvalidParamError,
-                match="Invalid input, key must be of length 128, 192 or 256 bits",
-            ):
-                Encrypt().validate(params={"key": b"1111111111111111"})
-        return
-
-    if hasattr(Encrypt, "_get_key_bytes"):
-        with mock.patch.object(Encrypt, "_get_key_bytes", return_value=b"x"):
-            with pytest.raises(
-                InvalidParamError,
-                match="Invalid input, key must be of length 128, 192 or 256 bits",
-            ):
-                Encrypt().validate(params={"key": b"1111111111111111"})
-        return
-
-    pytest.fail(
-        "Could not locate a key-bytes/length helper to patch. "
-        "Open presidio_anonymizer/operators/encrypt.py and note the exact helper name "
-        "used by Encrypt.validate(), then add it above."
-    )
+    with pytest.raises(
+        InvalidParamError,
+        match="Invalid input, key must be of length 128, 192 or 256 bits",
+    ):
+        # The provided key is valid length, but validate() uses the mocked value above
+        Encrypt().validate(params={"key": b"1111111111111111"})
 
 
 def test_operator_name():
@@ -97,19 +70,24 @@ def test_operator_name():
 def test_operator_type():
     operator = Encrypt()
     op_type = operator.operator_type()
-    # If it's an Enum, compare its name; if it's a string, compare directly
+    # Works whether operator_type returns an Enum or a plain string
     assert (getattr(op_type, "name", op_type)) == "Anonymize"
 
 
-# ✅ New black-box test for valid key lengths
-@pytest.mark.parametrize("key", [
-    "A" * 16,   # 128-bit string
-    "B" * 24,   # 192-bit string
-    "C" * 32,   # 256-bit string
-    b"A" * 16,  # 128-bit bytes
-    b"B" * 24,  # 192-bit bytes
-    b"C" * 32,  # 256-bit bytes
-])
+# ---- Black-box test for valid keys (strings & bytes) ----
+@pytest.mark.parametrize(
+    "key",
+    [
+        # String keys
+        "A" * 16,  # 128 bits
+        "B" * 24,  # 192 bits
+        "C" * 32,  # 256 bits
+        # Bytes keys
+        b"A" * 16,  # 128 bits
+        b"B" * 24,  # 192 bits
+        b"C" * 32,  # 256 bits
+    ],
+)
 def test_valid_keys(key):
     """Validate should succeed for string/bytes keys of valid bit lengths."""
     Encrypt().validate(params={"key": key})
