@@ -9,6 +9,15 @@ Branches in this repo (with details):
     e5c3ef8 | Author: Justin Haynes <232441884+jhayne17@users.noreply.github.com> | Committer: Justin Haynes <232441884+jhayne17@users.noreply.github.com> | Date: 2025-10-06T16:37:37Z | Merge branch 'main' of github.com:jhayne17/lab7
     8e54110 | Author: Justin Haynes <232441884+jhayne17@users.noreply.github.com> | Committer: Justin Haynes <232441884+jhayne17@users.noreply.github.com> | Date: 2025-10-06T16:37:37Z | Add debug assert in conflict test
     b8db0c4 | Author: Justin Haynes <232441884+jhayne17@users.noreply.github.com> | Committer: Justin Haynes <232441884+jhayne17@users.noreply.github.com> | Date: 2025-10-06T16:34:33Z | Fix test_invalid_length_bytes_key with correct patch target and return_value; add test_valid_keys
+- dependabot/github_actions/actions/checkout-6
+  SHA: 1a2e4432acf322ffd385c1230088be42bb1cb7e9
+  Commits: 16
+  Recent commits:
+    1a2e443 | Author: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com> | Committer: GitHub <noreply@github.com> | Date: 2025-11-24T07:36:51Z | Bump actions/checkout from 5 to 6
+    adf13ae | Author: GitHub Actions <actions@github.com> | Committer: GitHub Actions <actions@github.com> | Date: 2025-11-01T07:19:32Z | Auto-update branch-info.txt
+    43fb275 | Author: GitHub Actions <actions@github.com> | Committer: GitHub Actions <actions@github.com> | Date: 2025-10-06T16:37:53Z | Auto-update branch-info.txt
+    e5c3ef8 | Author: Justin Haynes <232441884+jhayne17@users.noreply.github.com> | Committer: Justin Haynes <232441884+jhayne17@users.noreply.github.com> | Date: 2025-10-06T16:37:37Z | Merge branch 'main' of github.com:jhayne17/lab7
+    8e54110 | Author: Justin Haynes <232441884+jhayne17@users.noreply.github.com> | Committer: Justin Haynes <232441884+jhayne17@users.noreply.github.com> | Date: 2025-10-06T16:37:37Z | Add debug assert in conflict test
 - lab7
   SHA: 6fd1f3348bc71e810798937402a6b0a69767135a
   Commits: 3
@@ -17,11 +26,11 @@ Branches in this repo (with details):
     530bc00 | Author: GitHub Actions <actions@github.com> | Committer: GitHub Actions <actions@github.com> | Date: 2025-10-06T15:21:27Z | Auto-update branch-info.txt
     8ab783f | Author: Justin Haynes <232441884+jhayne17@users.noreply.github.com> | Committer: GitHub <noreply@github.com> | Date: 2025-10-06T11:21:16-04:00 | Initial commit
 - main
-  SHA: 43fb275f7837e0fb2e3354c86fa136857b8af1ca
-  Commits: 14
+  SHA: adf13ae9a1e80d5c2e46eb295377902daa3f4b49
+  Commits: 15
   Recent commits:
+    adf13ae | Author: GitHub Actions <actions@github.com> | Committer: GitHub Actions <actions@github.com> | Date: 2025-11-01T07:19:32Z | Auto-update branch-info.txt
     43fb275 | Author: GitHub Actions <actions@github.com> | Committer: GitHub Actions <actions@github.com> | Date: 2025-10-06T16:37:53Z | Auto-update branch-info.txt
     e5c3ef8 | Author: Justin Haynes <232441884+jhayne17@users.noreply.github.com> | Committer: Justin Haynes <232441884+jhayne17@users.noreply.github.com> | Date: 2025-10-06T16:37:37Z | Merge branch 'main' of github.com:jhayne17/lab7
     8e54110 | Author: Justin Haynes <232441884+jhayne17@users.noreply.github.com> | Committer: Justin Haynes <232441884+jhayne17@users.noreply.github.com> | Date: 2025-10-06T16:37:37Z | Add debug assert in conflict test
     b8db0c4 | Author: Justin Haynes <232441884+jhayne17@users.noreply.github.com> | Committer: Justin Haynes <232441884+jhayne17@users.noreply.github.com> | Date: 2025-10-06T16:34:33Z | Fix test_invalid_length_bytes_key with correct patch target and return_value; add test_valid_keys
-    9077554 | Author: GitHub Actions <actions@github.com> | Committer: GitHub Actions <actions@github.com> | Date: 2025-10-06T16:26:33Z | Auto-update branch-info.txt
